@@ -11,5 +11,13 @@ RUN mkdir -p ${MP_DIR}/var \
  && wget https://evolveum.com/downloads/midpoint/${MP_VERSION}/midpoint-${MP_VERSION}-dist.tar.gz -P ${MP_DIR} \
  && echo 'Extracting midPoint archive...' \
  && tar xzf ${MP_DIR}/midpoint-${MP_VERSION}-dist.tar.gz -C ${MP_DIR} --strip-components=1
+ 
+Add set_user_permission.sh .
+
+Run chmod +x set_user_permission.sh
+
+RUN set_user_permission.sh $MP_DIR
+    
+USER 1000    
 
 CMD ["/bin/sh", "-c", "java -Xmx$XMX -Xms$XMS -Dfile.encoding=UTF8 -Dmidpoint.home=$MP_DIR/var -jar $MP_DIR/lib/midpoint.war"]
