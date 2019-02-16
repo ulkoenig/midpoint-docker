@@ -12,11 +12,11 @@ RUN mkdir -p ${MP_DIR}/var \
  && echo 'Extracting midPoint archive...' \
  && tar xzf ${MP_DIR}/midpoint-${MP_VERSION}-dist.tar.gz -C ${MP_DIR} --strip-components=1
  
-Add set_user_permission.sh .
+ADD ./set_user_permission.sh /tmp
 
-Run chmod +x set_user_permission.sh
+RUN chmod +x /tmp/set_user_permission.sh
 
-RUN set_user_permission.sh $MP_DIR
+RUN /tmp/set_user_permission.sh $MP_DIR
     
 USER 1000    
 
