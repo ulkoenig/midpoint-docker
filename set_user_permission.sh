@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 ### every exit != 0 fails the script
 set -e
 if [[ -z $DEBUG ]]; then
